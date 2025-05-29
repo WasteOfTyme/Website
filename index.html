@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteOfTyme</title>
+    <style>
+        /* General body styles */
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Styling the header */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Styling the paragraph */
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* Styling the image */
+        img {
+            width: 250px; /* Adjust the width as needed */
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        /* Button styles */
+        .button-container {
+            display: flex;
+            gap: 20px; /* Space between buttons */
+            justify-content: center;
+        }
+
+        .button {
+            background-color: #d3d3d3; /* Cool light grey button color */
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+            text-decoration: none; /* For links */
+        }
+
+        .button:hover {
+            background-color: black; /* Blend into black background on hover */
+            color: white; /* Change text color to white */
+        }
+
+        /* Add responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
+            .button {
+                font-size: 0.9rem;
+                padding: 12px 24px;
+            }
+            img {
+                width: 200px;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.8); /* Transparent black background */
+            color: white; /* White text */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Waste Of Tyme</h1>
+    <p>Tyme is extremely valuable, and I prefer to waste it.</p>
+    <img src="cat-image.png" alt="Cat Image">
+
+    <!-- Button Section -->
+    <div class="button-container">
+        <button class="button" id="learnMoreBtn">Learn More</button>
+        <button class="button" id="contactBtn">Contact Us</button>
+        <button class="button" id="servicesBtn">Our Services</button>
+    </div>
+
+    <!-- The Modal for Learn More -->
+    <div id="learnMoreModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Our mission is to become a recognizable figure across the world.</p>
+        </div>
+    </div>
+
+    <!-- The Modal for Contact Us -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Email info@wasteoftyme.com for all inquiries</p>
+        </div>
+    </div>
+
+    <!-- The Modal for Our Services -->
+    <div id="servicesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>We currently do not offer anything.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get the modals
+        var learnMoreModal = document.getElementById("learnMoreModal");
+        var contactModal = document.getElementById("contactModal");
+        var servicesModal = document.getElementById("servicesModal");
+
+        // Get the buttons that open the modals
+        var learnMoreBtn = document.getElementById("learnMoreBtn");
+        var contactBtn = document.getElementById("contactBtn");
+        var servicesBtn = document.getElementById("servicesBtn");
+
+        // Get the <span> elements that close the modals
+        var closeButtons = document.getElementsByClassName("close");
+
+        // When the user clicks the "Learn More" button, open the learn more modal
+        learnMoreBtn.onclick = function() {
+            learnMoreModal.style.display = "block";
+        }
+
+        // When the user clicks the "Contact Us" button, open the contact modal
+        contactBtn.onclick = function() {
+            contactModal.style.display = "block";
+        }
+
+        // When the user clicks the "Our Services" button, open the services modal
+        servicesBtn.onclick = function() {
+            servicesModal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        for (let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                learnMoreModal.style.display = "none";
+                contactModal.style.display = "none";
+                servicesModal.style.display = "none";
+            }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == learnMoreModal) {
+                learnMoreModal.style.display = "none";
+            }
+            if (event.target == contactModal) {
+                contactModal.style.display = "none";
+            }
+            if (event.target == servicesModal) {
+                servicesModal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
